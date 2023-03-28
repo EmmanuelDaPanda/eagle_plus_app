@@ -6,11 +6,14 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3),(){
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return SignIn();
-      },));
-      
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return const SignIn();
+          },
+        ),
+      );
     });
     return Scaffold(
       body: Image.asset(

@@ -1,4 +1,5 @@
-import 'package:eagle_plus_app/splash.dart';
+import 'package:eagle_plus_app/pages/signin.dart';
+import 'package:eagle_plus_app/pages/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Eagle Plus",
-      home: const Splash(),
+      home: const SignIn(),
       theme: ThemeData(
         primaryColor: const Color(0xFFCD9C3F),
       ),

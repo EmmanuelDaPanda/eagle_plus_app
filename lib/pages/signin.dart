@@ -1,27 +1,34 @@
+import 'package:eagle_plus_app/palette.dart';
+import 'package:eagle_plus_app/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatelessWidget {
-  SignIn({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          "images/icon/signin.png",
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          fit: BoxFit.contain,
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/icon/signin.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        Scaffold(
-          backgroundColor: const Color.fromARGB(66, 0, 0, 0),
-          body: SafeArea(
-            child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 200),
 
@@ -31,53 +38,24 @@ class SignIn extends StatelessWidget {
 
                   const Text(
                     "Welcome back!",
-                    style: TextStyle(fontSize: 25, color: Colors.white),
+                    style: TextStyle(fontSize: 25, color: Palette.white),
                   ),
 
                   const SizedBox(height: 100),
 
                   // email text field
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35),
-                    child: TextField(
+                  MyTextField(
                       controller: emailController,
-                      style: const TextStyle(color: Colors.white),
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        hintText: "Enter E-mail",
-                        hintStyle: TextStyle(color: Colors.white54),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFCD9C3F)),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                      hintText: "Enter E-mail",
+                      obscureText: false),
 
                   const SizedBox(height: 20),
 
                   // password text field
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35),
-                    child: TextField(
+                  MyTextField(
                       controller: passwordController,
-                      obscureText: true,
-                      style: const TextStyle(color: Colors.white),
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        hintText: "Enter Password",
-                        hintStyle: TextStyle(color: Colors.white54),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFCD9C3F)),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                      hintText: "Enter Password",
+                      obscureText: true),
 
                   const SizedBox(height: 20),
 
@@ -88,14 +66,14 @@ class SignIn extends StatelessWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: const Color(0xFFCD9C3F),
+                        borderRadius: BorderRadius.circular(8),
+                        color: Palette.gold,
                       ),
                       child: const Text(
                         "Sign In",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Palette.white,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
@@ -112,12 +90,13 @@ class SignIn extends StatelessWidget {
                       children: [
                         Row(
                           children: const [
-                            Icon(Icons.check_box_outlined, color: Colors.white54),
+                            Icon(Icons.check_box_outlined,
+                                color: Palette.lightWhite),
                             SizedBox(width: 5),
                             Text(
                               "Remember me",
                               style: TextStyle(
-                                color: Colors.white54,
+                                color: Palette.lightWhite,
                               ),
                             ),
                           ],
@@ -126,7 +105,7 @@ class SignIn extends StatelessWidget {
                         const Text(
                           "Forgot your password?",
                           style: TextStyle(
-                            color: Colors.white54,
+                            color: Palette.lightWhite,
                           ),
                         ),
                       ],
@@ -144,7 +123,7 @@ class SignIn extends StatelessWidget {
                         Text(
                           "New to Eag-le+?",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Palette.white,
                           ),
                         ),
                         SizedBox(
@@ -153,7 +132,7 @@ class SignIn extends StatelessWidget {
                         Text(
                           "Sign up now.",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Palette.white,
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
                           ),
@@ -165,23 +144,8 @@ class SignIn extends StatelessWidget {
               ),
             ),
           ),
-        )
-      ],
+        ),
+      ),
     );
-
-    // return Container(
-    //   decoration: const BoxDecoration(
-    //     image: DecorationImage(
-    //       image: AssetImage("images/icon/signin.png"),
-    //       fit: BoxFit.cover,
-    //     ),
-    //   ),
-    //   child: const SafeArea(
-    //     child: Scaffold(
-    //       backgroundColor: Colors.transparent,
-    //       body: Text("some text", style: TextStyle(fontSize: 30, color: Colors.white),),
-    //     ),
-    //   ),
-    // );
   }
 }
