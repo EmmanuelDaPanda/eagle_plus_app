@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "863069402685",
+    "project_id": "eagle-plus-app",
+    "storage_bucket": "eagle-plus-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863069402685:android:0cc3f1e1f68db215361c54",
+        "android_client_info": {
+          "package_name": "com.example.eagle_plus_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863069402685-q4cdeveii2u7deh97339gjfjill5bpci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxQVI2Bbosh8kfGS9tJJ81PV8tizwxUqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863069402685-q4cdeveii2u7deh97339gjfjill5bpci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "863069402685-u42mos2i253adprv48mduqjeg03tuvr9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eaglePlusApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

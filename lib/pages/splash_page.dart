@@ -1,4 +1,4 @@
-import 'package:eagle_plus_app/pages/signin.dart';
+import 'package:eagle_plus_app/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -16,7 +16,7 @@ class _SplashState extends State<Splash> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {
-            return const SignIn();
+            return const AuthPage();
           },
         ),
       );
