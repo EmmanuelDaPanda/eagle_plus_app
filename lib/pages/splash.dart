@@ -1,11 +1,17 @@
 import 'package:eagle_plus_app/pages/signin.dart';
 import 'package:flutter/material.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   const Splash({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+
+  @override
+  void initState() {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).push(
         MaterialPageRoute(
@@ -15,6 +21,11 @@ class Splash extends StatelessWidget {
         ),
       );
     });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Image.asset(
         "images/splash/intro2.png",

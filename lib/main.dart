@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Eagle Plus",
-      home: const SignIn(),
+      home: const Splash(),
       theme: ThemeData(
         primaryColor: const Color(0xFFCD9C3F),
       ),
