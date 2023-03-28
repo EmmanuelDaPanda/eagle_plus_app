@@ -3,22 +3,23 @@ import 'package:eagle_plus_app/widgets/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class SignUp extends StatefulWidget {
 
   final void Function()? onTap;
-  const SignIn({super.key, required this.onTap});
+  const SignUp({super.key, required this.onTap});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  // user sign in onTap function
-  void signInOnTap() async {
+  // user sign up onTap function
+  void signUpOnTap() async {
     // show loading circle
     showDialog(
       context: context,
@@ -29,12 +30,32 @@ class _SignInState extends State<SignIn> {
       },
     );
 
-    // sign in code block
+    // sign up code block
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      // check if passwords match
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
+      } else {
+        showDialog(
+        context: context,
+        builder: (context) {
+          return const AlertDialog(
+            backgroundColor: Palette.darkBrown,
+            title: Center(
+              child: Text(
+                "Passwords don't match!",
+                style: TextStyle(
+                  color: Palette.white,
+                ),
+              ),
+            ),
+          );
+        },
+      );
+      }
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException {
@@ -87,11 +108,11 @@ class _SignInState extends State<SignIn> {
                   const SizedBox(height: 20),
 
                   const Text(
-                    "Welcome back!",
-                    style: TextStyle(fontSize: 25, color: Palette.white),
+                    "Create an account!",
+                    style: TextStyle(fontSize: 20, color: Palette.white),
                   ),
 
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 70),
 
                   // email text field
                   MyTextField(
@@ -111,9 +132,18 @@ class _SignInState extends State<SignIn> {
 
                   const SizedBox(height: 20),
 
-                  // sign in button
+                  // confirm password text field
+                  MyTextField(
+                    controller: confirmPasswordController,
+                    hintText: "Confirm Password",
+                    obscureText: true,
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // sign up button
                   GestureDetector(
-                    onTap: signInOnTap,
+                    onTap: signUpOnTap,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
                       child: Container(
@@ -124,7 +154,7 @@ class _SignInState extends State<SignIn> {
                           color: Palette.gold,
                         ),
                         child: const Text(
-                          "Sign In",
+                          "Sign Up",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Palette.white,
@@ -133,24 +163,6 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                       ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  // forgot password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text(
-                          "Forgot your password?",
-                          style: TextStyle(
-                            color: Palette.lightWhite,
-                          ),
-                        ),
-                      ],
                     ),
                   ),
 
@@ -224,16 +236,16 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
 
-                  const SizedBox(height: 100),
+                  const SizedBox(height: 70),
 
-                  // create account
+                  // already have account?
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "New to Eag-le+?",
+                          "Already have an account?",
                           style: TextStyle(
                             color: Palette.white,
                           ),
@@ -244,7 +256,7 @@ class _SignInState extends State<SignIn> {
                         GestureDetector(
                           onTap: widget.onTap,
                           child: const Text(
-                            "Sign up now!",
+                            "Sign in!",
                             style: TextStyle(
                               color: Palette.white,
                               fontWeight: FontWeight.bold,
