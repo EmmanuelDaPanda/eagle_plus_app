@@ -1,4 +1,6 @@
 import 'package:eagle_plus_app/palette.dart';
+import 'package:eagle_plus_app/services/auth_service.dart';
+import 'package:eagle_plus_app/widgets/google_signin.dart';
 import 'package:eagle_plus_app/widgets/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,24 +40,25 @@ class _SignUpState extends State<SignUp> {
         email: emailController.text,
         password: passwordController.text,
       );
-      } else {
-        showDialog(
-        context: context,
-        builder: (context) {
-          return const AlertDialog(
-            backgroundColor: Palette.darkBrown,
-            title: Center(
-              child: Text(
-                "Passwords don't match!",
-                style: TextStyle(
-                  color: Palette.white,
-                ),
-              ),
-            ),
-          );
-        },
-      );
-      }
+      } 
+      // else {
+      //   showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return const AlertDialog(
+      //       backgroundColor: Palette.darkBrown,
+      //       title: Center(
+      //         child: Text(
+      //           "Passwords don't match!",
+      //           style: TextStyle(
+      //             color: Palette.white,
+      //           ),
+      //         ),
+      //       ),
+      //     );
+      //   },
+      // );
+      // }
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException {
@@ -79,9 +82,6 @@ class _SignUpState extends State<SignUp> {
       );
     }
   }
-
-  // continue with Google onTap function
-  void googleOnTap() {}
 
   @override
   Widget build(BuildContext context) {
@@ -202,38 +202,8 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(height: 20),
 
                   // continue with google button
-                  GestureDetector(
-                    onTap: googleOnTap,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 35),
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(18),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Palette.gold,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "images/icon/Google.png",
-                              height: 25,
-                            ),
-                            const SizedBox(width: 10),
-                            const Text(
-                              "Continue with Google",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Palette.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  ContinueWithGoogle(
+                    googleOnTap: () => AuthService().signInWithGoogle(),
                   ),
 
                   const SizedBox(height: 70),
