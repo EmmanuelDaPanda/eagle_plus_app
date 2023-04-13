@@ -25,7 +25,7 @@ class MyTextField extends StatelessWidget {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: const TextStyle(color: Palette.lightWhite),
+          hintStyle: const TextStyle(color: Palette.whiteAccent),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: Palette.gold,

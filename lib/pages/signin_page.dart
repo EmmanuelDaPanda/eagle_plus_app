@@ -25,7 +25,7 @@ class _SignInState extends State<SignIn> {
       context: context,
       builder: (context) {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: Palette.gold),
         );
       },
     );
@@ -145,7 +145,7 @@ class _SignInState extends State<SignIn> {
                         Text(
                           "Forgot your password?",
                           style: TextStyle(
-                            color: Palette.lightWhite,
+                            color: Palette.whiteAccent,
                           ),
                         ),
                       ],
@@ -162,7 +162,7 @@ class _SignInState extends State<SignIn> {
                         Expanded(
                           child: Divider(
                             thickness: 1,
-                            color: Palette.lightWhite,
+                            color: Palette.whiteAccent,
                           ),
                         ),
                         Padding(
@@ -170,7 +170,7 @@ class _SignInState extends State<SignIn> {
                           child: Text(
                             "or",
                             style: TextStyle(
-                              color: Palette.lightWhite,
+                              color: Palette.whiteAccent,
                               fontSize: 16,
                             ),
                           ),

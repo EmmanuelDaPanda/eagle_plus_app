@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Palette {
   static const Color white = Color(0xFFFFFFFF);
-  static const Color lightWhite = Color(0xFFA7A7A7);
+  static const Color whiteAccent = Color(0x7AFFFFFF);
   static const Color gold = Color(0xFFCD9C3F);
   static const Color goldAccent = Color(0xFF291F0C);
   static const Color darkBrown = Color(0xFF0F0807);

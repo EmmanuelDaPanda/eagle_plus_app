@@ -1,3 +1,5 @@
 - need to fix transition between splash to screen. make it smoother
 - confirm password not working, need to commit final version of signup page
-- google signin not working, need to commit final version
+- google signin not working, need to commit final version [DONE]
+- bottom nav bar hover
+- make lists into map

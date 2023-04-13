@@ -27,7 +27,7 @@ class _SignUpState extends State<SignUp> {
       context: context,
       builder: (context) {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: Palette.gold),
         );
       },
     );
@@ -176,7 +176,7 @@ class _SignUpState extends State<SignUp> {
                         Expanded(
                           child: Divider(
                             thickness: 1,
-                            color: Palette.lightWhite,
+                            color: Palette.whiteAccent,
                           ),
                         ),
                         Padding(
@@ -184,7 +184,7 @@ class _SignUpState extends State<SignUp> {
                           child: Text(
                             "or",
                             style: TextStyle(
-                              color: Palette.lightWhite,
+                              color: Palette.whiteAccent,
                               fontSize: 16,
                             ),
                           ),
